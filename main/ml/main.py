@@ -1,6 +1,7 @@
 # Moisture Simulation
 import random
-import csv 
+import csv
+from pathlib import Path
 
 hour_count = 24
 moisture_level = 75
@@ -29,7 +30,7 @@ def display_data(dataset):
     print(dataset)
 
 def save_to_csv(dataset, filename):
-    with open(f"{filename}.csv", "w", newline="") as file:
+    with open(f"{filename}", "w", newline="") as file:
         writer = csv.writer(file)
 
         writer.writerow(["Hour", "Moisture", "Watered"])
@@ -41,5 +42,9 @@ def save_to_csv(dataset, filename):
                 values["watered"]
             ])
 
-trial_data1 = simulate_moisture(moisture_level, hour_count, 12)
-save_to_csv(trial_data1, "trialdata1")
+trial_data = simulate_moisture(moisture_level, hour_count, 12)
+
+current_dir = Path(__file__).resolve().parent
+trial_data_file = current_dir.parent / "tests" / "trialdata1.csv"
+
+save_to_csv(trial_data, trial_data_file)
