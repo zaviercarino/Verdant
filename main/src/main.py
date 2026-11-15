@@ -45,6 +45,6 @@ def save_to_csv(dataset, filename):
 trial_data = simulate_moisture(moisture_level, hour_count, 12)
 
 current_dir = Path(__file__).resolve().parent
-trial_data_file = current_dir.parent / "tests" / "trialdata1.csv"
+trial_data_file = current_dir.parent / "data" / "raw" / "trialdata1.csv"
 
 save_to_csv(trial_data, trial_data_file)
