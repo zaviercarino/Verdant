@@ -1,0 +1,1 @@
+Can machine-learning models predict future soil moisture from historical measurements and environmental conditions, and outperform simple forecasting baselines on simulated data?
