@@ -9,7 +9,7 @@ trial_data_files = {
     "TrialDataTwo" : pd.read_csv(current_dir.parent / "data" / "raw" / f"trial2data.csv")
 }
 
-class ml_dataset():
+class MLDataset():
     
     feature_columns = [
         "Temperature",
@@ -24,6 +24,6 @@ class ml_dataset():
 
     def __str__(self):
         return f"X Shape: {self.x.shape} \nY Shape: {self.y.shape}"
-    
-Trial_Data_One = ml_dataset(prepare_ml_data(trial_data_files["TrialDataOne"]))
-print(Trial_Data_One)
+
+def create_new_ml_dataset(trial_name): 
+    return MLDataset(prepare_ml_data(trial_data_files[f"{trial_name}"]))
