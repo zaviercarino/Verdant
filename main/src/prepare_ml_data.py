@@ -1,12 +1,7 @@
-# Load one of your simulated CSV files using pandas.
-# Convert the hour labels into integers.
-# Create a Next_Moisture column using shift(-1).
-# Remove rows where Next_Moisture is missing.
-# Separate your input features (X) from your prediction target (y).
-# Print the shapes of X and y.
-
 import pandas as pd
 from pathlib import Path
+from data_analysis import prepare_ml_data
+
 current_dir = Path(__file__).resolve().parent
 
 trial_data_files = {
@@ -14,11 +9,21 @@ trial_data_files = {
     "TrialDataTwo" : pd.read_csv(current_dir.parent / "data" / "raw" / f"trial2data.csv")
 }
 
-def string_to_int_hour_column(df):
-    new_df = df.copy()
-    new_df["Hour"] = new_df["Hour"].str.replace("Hour", "").astype(int)
+class ml_dataset():
     
-    return new_df
+    feature_columns = [
+        "Temperature",
+        "Humidity",
+        "Moisture"
+    ]
 
-new_df_one = string_to_int_hour_column(trial_data_files["TrialDataOne"])
-print(new_df_one)
+    def __init__(self, trial_data):
+        self.trial_data = trial_data
+        self.x = trial_data[self.feature_columns]
+        self.y = trial_data["Next_Moisture"]
+
+    def __str__(self):
+        return f"X Shape: {self.x.shape} \nY Shape: {self.y.shape}"
+    
+Trial_Data_One = ml_dataset(prepare_ml_data(trial_data_files["TrialDataOne"]))
+print(Trial_Data_One)
