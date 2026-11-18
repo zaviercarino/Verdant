@@ -6,7 +6,8 @@ current_dir = Path(__file__).resolve().parent
 
 trial_data_files = {
     "TrialDataOne" : pd.read_csv(current_dir.parent / "data" / "raw" / f"trial1data.csv"),
-    "TrialDataTwo" : pd.read_csv(current_dir.parent / "data" / "raw" / f"trial2data.csv")
+    "TrialDataTwo" : pd.read_csv(current_dir.parent / "data" / "raw" / f"trial2data.csv"),
+    "TrialDataThree" : pd.read_csv(current_dir.parent / "data" / "raw" / f"trial3data.csv")
 }
 
 class MLDataset():

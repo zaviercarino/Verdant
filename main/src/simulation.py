@@ -62,10 +62,14 @@ class PlantSimulation:
                     ])
 
 if __name__ == "main":
-    plant1 = PlantSimulation(75, 168, 22, 60, [24, 72, 120], 12, 67)
+    plant1 = PlantSimulation(75, 168, 22, 60, [24, 72, 120,], 12, 67)
     trial1 = plant1.simulate_trial()
     plant1.generate_csv(trial1, "trial1data")
 
-    plant2 = PlantSimulation(75, 165, 20, 63, [84], 11, 69)
+    plant2 = PlantSimulation(75, 168, 20, 63, [24, 72, 120], 11, 69)
     trial2 = plant2.simulate_trial()
     plant2.generate_csv(trial2, "trial2data")
+
+    plant3 = PlantSimulation(75, 168, 25, 57, [24, 72, 120], 13, 65)
+    trial3 = plant3.simulate_trial()
+    plant3.generate_csv(trial3, "trial3data")
