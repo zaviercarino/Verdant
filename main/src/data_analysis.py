@@ -1,10 +1,4 @@
 import pandas as pd
-from pathlib import Path
-
-current_dir = Path(__file__).resolve().parent
-trial_data = current_dir.parent / "data" / "raw" / "trialdata1.csv"
-
-df = pd.read_csv(trial_data)
 
 def clean_data(df):
     df = df.copy()
@@ -14,7 +8,16 @@ def clean_data(df):
     df["Three_Hour_Avg"] = round((df["Moisture"].rolling(window=3).mean()), 2)
 
     df.set_index("Hour", inplace=True)
+
     return df
+
+def prepare_ml_data(df):
+    cleaned_df = clean_data(df)
+
+    cleaned_df["Next_Moisture"] = cleaned_df["Moisture"].shift(-1)
+    cleaned_df = cleaned_df.dropna(subset=["Next_Moisture"])
+    
+    return cleaned_df
 
 def calculate_statistics(df):
     stats = {
@@ -26,6 +29,3 @@ def calculate_statistics(df):
 
 def get_watering_hours(df):
     return df.loc[df["Watered"]].index.tolist()
-
-new_df = clean_data(df)
-water_hours = get_watering_hours(new_df)
