@@ -39,16 +39,15 @@ The long-term objective is to transition from software simulation to a physical 
 
 ## ✨ Key Features
 
-| Feature | Description | Status |
-|---|---|---|
-| 🌡️ Environmental Simulation | Generates temperature, humidity, and moisture data | ✅ Implemented |
-| 💧 Watering Simulation | Supports configurable watering schedules and amounts | ✅ Implemented |
-| 📊 Data Engineering | Processes raw time-series measurements into ML-ready datasets | ✅ Implemented |
-| 🧠 Linear Regression | Trains a supervised model to predict future soil moisture | ✅ Initial implementation |
-| 📉 Error Evaluation | Evaluates predictions using Mean Absolute Error | ✅ Implemented |
-| 📏 Baseline Comparison | Compares ML predictions against persistence forecasting | 🔄 Next |
-| 📈 Model Visualization | Visualizes predictions and forecasting errors | 📋 Planned |
-| 🌱 Embedded Monitoring | Integrates physical sensors with Raspberry Pi Pico 2 | 📋 Future |
+| Feature | Description |
+|---|---|
+| 🌡️ Environmental Simulation | Generates temperature, humidity, and moisture data 
+| 💧 Watering Simulation | Supports configurable watering schedules and amounts 
+| 📊 Data Engineering | Processes raw time-series measurements into ML-ready datasets
+| 🧠 Linear Regression | Trains a supervised model to predict future soil moisture 
+| 📉 Error Evaluation | Evaluates predictions using Mean Absolute Error
+| 📏 Baseline Comparison | Compares ML predictions against persistence forecasting
+| 📈 Model Visualization | Visualizes predictions and forecasting errors
 
 ---
 
@@ -320,5 +319,6 @@ The project is developed with an emphasis on **reproducible experimentation, tra
 *Python • Machine Learning • Environmental Simulation • Embedded Systems*
 
 **Status: Active Development | November 2026**
+*README.md built with assistance of my best bud, GPT*
 
 </div>
