@@ -18,6 +18,13 @@ def train_and_evaluate(trial_name):
     mae = mean_absolute_error(y_test, predictions)
     print("MAE:", mae)
 
+    baseline_predictions = x_test["Moisture"]
+    baseline_mae = mean_absolute_error(y_test, baseline_predictions)
+    print("Baseline MAE:", baseline_mae)
+
+    print("Coefficients:", model.coef_)
+    print("Intercept:", model.intercept_)
+
     return model, mae
 
 train_and_evaluate("TrialDataOne")
