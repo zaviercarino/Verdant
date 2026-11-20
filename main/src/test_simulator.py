@@ -1,13 +1,5 @@
 from simulation import PlantSimulation
 
-def test_simulation_length():
-    plant = PlantSimulation(
-        75, 168, 22, 60,
-        [24, 72, 120], 12, 67
-    )
-
-    dataset = plant.simulate_trial()
-
 def test_random_seed():
     plant = PlantSimulation(
         75, 168, 22, 60,
@@ -19,7 +11,7 @@ def test_random_seed():
 
     assert first == second
 
-def test_wrong_length():
+def test_simulation_length():
     plant = PlantSimulation(
         75, 168, 22, 60,
         [24, 72, 120], 12, 67
