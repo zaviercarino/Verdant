@@ -16,14 +16,20 @@ def train_and_evaluate(trial_name):
 
     predictions = model.predict(x_test)
     mae = mean_absolute_error(y_test, predictions)
-    print("MAE:", mae)
+    # print("MAE:", mae)
+
+    results = x_test.copy()
+    results["Actual"] = y_test
+    results["Predicted"] = predictions
+    results["MAE"] = (results["Actual"] - results["Predicted"]).abs()
+    # print(results)
 
     baseline_predictions = x_test["Moisture"]
     baseline_mae = mean_absolute_error(y_test, baseline_predictions)
-    print("Baseline MAE:", baseline_mae)
+    # print("Baseline MAE:", baseline_mae)
 
-    print("Coefficients:", model.coef_)
-    print("Intercept:", model.intercept_)
+    # print("Coefficients:", model.coef_)
+    # print("Intercept:", model.intercept_)
 
     return model, mae
 

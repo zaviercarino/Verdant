@@ -1,4 +1,4 @@
-Hour,Temperature,Humidity,Moisture,Watered
+Temperature,Humidity,Moisture,Watered
 Hour1,22.35,63.8,74.55,False
 Hour2,22.07,64.74,74.18,False
 Hour3,21.9,65.08,73.73,False
