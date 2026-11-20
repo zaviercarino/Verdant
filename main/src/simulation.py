@@ -1,9 +1,6 @@
 import random
-import csv
+import pandas as pd
 import math
-
-from pathlib import Path
-current_dir = Path(__file__).resolve().parent
 
 from data_analysis import generate_csv
 
@@ -46,15 +43,15 @@ class PlantSimulation:
 
         return data_set
 
-if __name__ == "main":
-    plant1 = PlantSimulation(75, 168, 22, 60, [24, 72, 120,], 12, 67)
-    trial1 = plant1.simulate_trial()
-    generate_csv(trial1, "Trial_One_Data", "raw")
 
-    plant2 = PlantSimulation(75, 168, 20, 63, [24, 72, 120], 11, 69)
-    trial2 = plant2.simulate_trial()
-    generate_csv(trial2, "Trial_Two_Data", "raw")
+plant1 = PlantSimulation(75, 168, 22, 60, [24, 72, 120,], 12, 67)
+trial1 = pd.DataFrame(plant1.simulate_trial()).T
+generate_csv(trial1, "Trial_One_Data", "raw")
 
-    plant3 = PlantSimulation(75, 168, 25, 57, [24, 72, 120], 13, 65)
-    trial3 = plant3.simulate_trial()
-    generate_csv(trial3, "Trial_Three_Data", "raw")
+plant2 = PlantSimulation(75, 168, 20, 63, [24, 72, 120], 11, 69)
+trial2 = pd.DataFrame(plant2.simulate_trial()).T
+generate_csv(trial2, "Trial_Two_Data", "raw")
+
+plant3 = PlantSimulation(75, 168, 25, 57, [24, 72, 120], 13, 65)
+trial3 = pd.DataFrame(plant3.simulate_trial()).T
+generate_csv(trial3, "Trial_Three_Data", "raw")
