@@ -5,6 +5,8 @@ import math
 from pathlib import Path
 current_dir = Path(__file__).resolve().parent
 
+from data_analysis import generate_csv
+
 class PlantSimulation:
 
     def __init__(self, initial_moisture, trial_hours, temperature, humidity, watering_hours, watering_amount, trial_seed):
@@ -44,32 +46,15 @@ class PlantSimulation:
 
         return data_set
 
-    def generate_csv(self, dataset, filename):
-        output_path = current_dir.parent / "data" / "raw" / f"{filename}.csv"
-
-        with open(output_path, "w", newline="") as file:
-                writer = csv.writer(file)
-         
-                writer.writerow(["Hour", "Temperature", "Humidity", "Moisture", "Watered"])
-         
-                for hour, values in dataset.items():
-                    writer.writerow([
-                        hour, 
-                        values["Temperature"],
-                        values["Humidity"],
-                        values["Moisture"],
-                        values["Watered"]
-                    ])
-
 if __name__ == "main":
     plant1 = PlantSimulation(75, 168, 22, 60, [24, 72, 120,], 12, 67)
     trial1 = plant1.simulate_trial()
-    plant1.generate_csv(trial1, "trial1data")
+    generate_csv(trial1, "Trial_One_Data", "raw")
 
     plant2 = PlantSimulation(75, 168, 20, 63, [24, 72, 120], 11, 69)
     trial2 = plant2.simulate_trial()
-    plant2.generate_csv(trial2, "trial2data")
+    generate_csv(trial2, "Trial_Two_Data", "raw")
 
     plant3 = PlantSimulation(75, 168, 25, 57, [24, 72, 120], 13, 65)
     trial3 = plant3.simulate_trial()
-    plant3.generate_csv(trial3, "trial3data")
+    generate_csv(trial3, "Trial_Three_Data", "raw")
