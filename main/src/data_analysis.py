@@ -5,15 +5,13 @@ current_dir = Path(__file__).resolve().parent
 
 def clean_data(df, trial_name):
     df = df.copy()
-
-    df["Moisture_Change"] = df["Moisture"].diff().fillna(0)
-    df["Hour"] = df["Hour"].str.replace("Hour", "").astype(int)
+    
+    df["Moisture_Change"] = df["Moisture"].diff().round(2).fillna(0)
+    df.index = df.index.astype(str).str.removeprefix("Hour").astype(int)
+    df.index.name = "Hour"
     df["Three_Hour_Avg"] = round((df["Moisture"].rolling(window=3).mean()), 2)
-    
-    df.set_index("Hour", inplace=True)
-    
+        
     generate_csv(df, trial_name, "processed")
-
     return df
 
 def generate_csv(dataset, filename, folder_name):
@@ -26,7 +24,6 @@ def generate_csv(dataset, filename, folder_name):
         
                 for hour, values in dataset.iterrows():
                     writer.writerow([hour, *values.tolist()])
-
     except ValueError:
         return ValueError
 
