@@ -15,7 +15,8 @@ class MLDataset():
     feature_columns = [
         "Temperature",
         "Humidity",
-        "Moisture"
+        "Moisture",
+        "Watered_Next_Hour"
     ]
 
     def __init__(self, trial_data, trial_name):
@@ -27,12 +28,11 @@ class MLDataset():
         self.trial_data = trial_data
         self.x = trial_data[self.feature_columns]
         self.y = trial_data["Next_Moisture"]
-
+        
         generate_csv(trial_data, trial_name, "ml")
 
     def __str__(self):
         return f"X Shape: {self.x.shape} \nY Shape: {self.y.shape}"
 
 def create_new_ml_dataset(trial_name): 
-    print(trial_data_files[f"{trial_name}"])
     return MLDataset(trial_data_files[f"{trial_name}"], trial_name)
