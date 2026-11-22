@@ -57,7 +57,7 @@ The long-term objective is to transition from software simulation to a physical 
                  🌱 VERDANT
                       │
           ┌───────────▼───────────┐
-          │ Environmental Simulator│
+          │Environmental Simulator│
           │                       │
           │  • Temperature        │
           │  • Humidity           │
