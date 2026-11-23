@@ -38,7 +38,6 @@ class PlantSimulation:
                     "Humidity" : round(humidity, 2),
                     "Moisture" : round(moisture, 2),
                     "Watered" : watered
-
                 }
 
         return data_set
@@ -55,3 +54,7 @@ if __name__ == "__main__":
     plant3 = PlantSimulation(75, 168, 25, 57, [24, 72, 120], 13, 65)
     trial3 = pd.DataFrame(plant3.simulate_trial()).T
     generate_csv(trial3, "Trial_Three_Data", "raw")
+
+    plant4 = PlantSimulation(75, 168, 25, 57, [30, 60, 90, 120, 150], 13, 63)
+    trial4 = pd.DataFrame(plant4.simulate_trial()).T
+    generate_csv(trial4, "Trial_Four_Data", "raw")

@@ -45,3 +45,4 @@ def train_and_evaluate(trial_name):
 train_and_evaluate("TrialDataOne")
 train_and_evaluate("TrialDataTwo")
 train_and_evaluate("TrialDataThree")
+train_and_evaluate("TrialDataFour")
